@@ -1,0 +1,60 @@
+{
+  "info": {
+    "_postman_id": "step6-sorting-collection-12345",
+    "name": "Blog API - Step 6 Sorting Endpoint",
+    "description": "Tests for GET /api/posts sorting functionality.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Sort by Title ASC",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:5002/api/posts?sort=title&direction=asc",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5002",
+          "path": ["api", "posts"],
+          "query": [
+            { "key": "sort", "value": "title" },
+            { "key": "direction", "value": "asc" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Sort by Title DESC",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:5002/api/posts?sort=title&direction=desc",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5002",
+          "path": ["api", "posts"],
+          "query": [
+            { "key": "sort", "value": "title" },
+            { "key": "direction", "value": "desc" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Invalid Sort Field (400)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:5002/api/posts?sort=invalid",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5002",
+          "path": ["api", "posts"],
+          "query": [
+            { "key": "sort", "value": "invalid" }
+          ]
+        }
+      }
+    }
+  ]
+}

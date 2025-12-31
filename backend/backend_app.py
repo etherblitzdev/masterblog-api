@@ -10,10 +10,29 @@ POSTS = [
     {"id": 2, "title": "Second Post", "content": "This is the second post."},
 ]
 
-# LIST POSTS (Step 1)
+# LIST POSTS (Step 1 + Step 6 sorting)
 @app.route('/api/posts', methods=['GET'])
 def list_posts():
-    return jsonify(POSTS), 200
+    sort_field = request.args.get("sort")
+    direction = request.args.get("direction", "asc")
+
+    # Validate sort field if provided
+    if sort_field and sort_field not in ["title", "content"]:
+        return jsonify({"error": "Invalid sort field. Must be 'title' or 'content'."}), 400
+
+    # Validate direction if provided
+    if direction not in ["asc", "desc"]:
+        return jsonify({"error": "Invalid direction. Must be 'asc' or 'desc'."}), 400
+
+    # Default: return original order
+    sorted_posts = POSTS.copy()
+
+    # Apply sorting only if sort field is provided
+    if sort_field:
+        reverse = (direction == "desc")
+        sorted_posts.sort(key=lambda p: p[sort_field].lower(), reverse=reverse)
+
+    return jsonify(sorted_posts), 200
 
 # ADD POST (Step 2)
 @app.route('/api/posts', methods=['POST'])
@@ -70,7 +89,6 @@ def search_posts():
         title_match = title_query in post["title"].lower() if title_query else False
         content_match = content_query in post["content"].lower() if content_query else False
 
-        # If either title or content matches, include the post
         if title_match or content_match:
             results.append(post)
 
