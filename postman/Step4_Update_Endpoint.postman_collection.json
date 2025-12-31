@@ -1,0 +1,66 @@
+{
+  "info": {
+    "_postman_id": "c1e8b2f1-9d44-4b0c-9f77-step4update123",
+    "name": "Blog API - Step 4 Update Endpoint",
+    "description": "Tests for PUT /api/posts/:id update endpoint.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "PUT /api/posts/1 - Update Existing Post (200)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Updated Title\",\n  \"content\": \"Updated Content\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5002/api/posts/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5002",
+          "path": ["api", "posts", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PUT /api/posts/999 - Update Nonexistent Post (404)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"title\": \"Does Not Matter\" }"
+        },
+        "url": {
+          "raw": "http://localhost:5002/api/posts/999",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5002",
+          "path": ["api", "posts", "999"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET /api/posts - Verify Update",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:5002/api/posts",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5002",
+          "path": ["api", "posts"]
+        }
+      },
+      "response": []
+    }
+  ]
+}
