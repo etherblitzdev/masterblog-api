@@ -53,14 +53,28 @@ def update_post(post_id):
 
     data = request.get_json() or {}
 
-    # Optional fields: keep old values if missing
-    new_title = data.get("title", post["title"])
-    new_content = data.get("content", post["content"])
-
-    post["title"] = new_title
-    post["content"] = new_content
+    post["title"] = data.get("title", post["title"])
+    post["content"] = data.get("content", post["content"])
 
     return jsonify(post), 200
+
+# SEARCH POSTS (Step 5)
+@app.route('/api/posts/search', methods=['GET'])
+def search_posts():
+    title_query = request.args.get("title", "").lower()
+    content_query = request.args.get("content", "").lower()
+
+    results = []
+
+    for post in POSTS:
+        title_match = title_query in post["title"].lower() if title_query else False
+        content_match = content_query in post["content"].lower() if content_query else False
+
+        # If either title or content matches, include the post
+        if title_match or content_match:
+            results.append(post)
+
+    return jsonify(results), 200
 
 
 if __name__ == '__main__':

@@ -1,0 +1,61 @@
+{
+  "info": {
+    "_postman_id": "step5-search-collection-12345",
+    "name": "Blog API - Step 5 Search Endpoint",
+    "description": "Tests for GET /api/posts/search endpoint.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Search by Title (200)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:5002/api/posts/search?title=first",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5002",
+          "path": ["api", "posts", "search"],
+          "query": [
+            { "key": "title", "value": "first" }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Search by Content (200)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:5002/api/posts/search?content=second",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5002",
+          "path": ["api", "posts", "search"],
+          "query": [
+            { "key": "content", "value": "second" }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Search No Results (200)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:5002/api/posts/search?title=xyz",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5002",
+          "path": ["api", "posts", "search"],
+          "query": [
+            { "key": "title", "value": "xyz" }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
