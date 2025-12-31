@@ -1,0 +1,63 @@
+{
+  "info": {
+    "_postman_id": "step8-expanded-model-collection-12345",
+    "name": "Blog API - Step 8 Expanded Data Model",
+    "description": "Tests for categories, tags, and comments functionality.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Post with Categories & Tags",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Tech News\",\n  \"content\": \"Latest updates in AI.\",\n  \"categories\": [\"technology\"],\n  \"tags\": [\"ai\", \"news\"]\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5002/api/posts",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5002",
+          "path": ["api", "posts"]
+        }
+      }
+    },
+    {
+      "name": "Add Comment to Post 1",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"comment\": \"Great article!\" }"
+        },
+        "url": {
+          "raw": "http://localhost:5002/api/posts/1/comments",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5002",
+          "path": ["api", "posts", "1", "comments"]
+        }
+      }
+    },
+    {
+      "name": "Verify Expanded Model via GET /api/posts",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:5002/api/posts",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5002",
+          "path": ["api", "posts"]
+        }
+      }
+    }
+  ]
+}

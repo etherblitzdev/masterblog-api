@@ -1,0 +1,61 @@
+{
+  "info": {
+    "_postman_id": "step7-pagination-collection-12345",
+    "name": "Blog API - Step 7 Pagination Endpoint",
+    "description": "Tests for GET /api/posts pagination functionality.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Page 1, Limit 1",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:5002/api/posts?page=1&limit=1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5002",
+          "path": ["api", "posts"],
+          "query": [
+            { "key": "page", "value": "1" },
+            { "key": "limit", "value": "1" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Page 2, Limit 1",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:5002/api/posts?page=2&limit=1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5002",
+          "path": ["api", "posts"],
+          "query": [
+            { "key": "page", "value": "2" },
+            { "key": "limit", "value": "1" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Page 1, Limit 10",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:5002/api/posts?page=1&limit=10",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5002",
+          "path": ["api", "posts"],
+          "query": [
+            { "key": "page", "value": "1" },
+            { "key": "limit", "value": "10" }
+          ]
+        }
+      }
+    }
+  ]
+}

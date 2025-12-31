@@ -1,0 +1,66 @@
+{
+  "info": {
+    "_postman_id": "step1-8-complete-api-collection-12345",
+    "name": "Blog API - Complete Steps 1–8",
+    "description": "Full API test suite including list, add, delete, update, search, sorting, pagination, and expanded model.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    { "name": "GET /api/posts (List)", "request": { "method": "GET", "url": "http://localhost:5002/api/posts" } },
+    {
+      "name": "POST /api/posts (Add)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{ \"title\": \"New Post\", \"content\": \"Hello World\" }" },
+        "url": "http://localhost:5002/api/posts"
+      }
+    },
+    {
+      "name": "DELETE /api/posts/1",
+      "request": { "method": "DELETE", "url": "http://localhost:5002/api/posts/1" }
+    },
+    {
+      "name": "PUT /api/posts/2 (Update)",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{ \"title\": \"Updated\", \"content\": \"Updated content\" }" },
+        "url": "http://localhost:5002/api/posts/2"
+      }
+    },
+    {
+      "name": "GET /api/posts/search",
+      "request": { "method": "GET", "url": "http://localhost:5002/api/posts/search?title=first" }
+    },
+    {
+      "name": "GET /api/posts?sort=title&direction=asc",
+      "request": { "method": "GET", "url": "http://localhost:5002/api/posts?sort=title&direction=asc" }
+    },
+    {
+      "name": "GET /api/posts?page=1&limit=1",
+      "request": { "method": "GET", "url": "http://localhost:5002/api/posts?page=1&limit=1" }
+    },
+    {
+      "name": "POST /api/posts (Expanded Model)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Advanced Post\",\n  \"content\": \"Testing categories and tags.\",\n  \"categories\": [\"dev\"],\n  \"tags\": [\"python\", \"api\"]\n}"
+        },
+        "url": "http://localhost:5002/api/posts"
+      }
+    },
+    {
+      "name": "POST /api/posts/2/comments",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{ \"comment\": \"Nice update!\" }" },
+        "url": "http://localhost:5002/api/posts/2/comments"
+      }
+    }
+  ]
+}
