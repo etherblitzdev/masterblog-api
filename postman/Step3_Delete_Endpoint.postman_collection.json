@@ -1,0 +1,55 @@
+{
+  "info": {
+    "_postman_id": "d4f9c1b2-8a3e-4c9e-9f22-abcdef123456",
+    "name": "Blog API - Step 3 Delete Endpoint",
+    "description": "Tests for DELETE /api/posts/:id endpoint.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "DELETE /api/posts/1 - Delete Existing Post (200)",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5002/api/posts/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5002",
+          "path": ["api", "posts", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "DELETE /api/posts/999 - Delete Nonexistent Post (404)",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5002/api/posts/999",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5002",
+          "path": ["api", "posts", "999"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET /api/posts - Verify Deletion",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5002/api/posts",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5002",
+          "path": ["api", "posts"]
+        }
+      },
+      "response": []
+    }
+  ]
+}
