@@ -1,0 +1,121 @@
+{
+  "info": {
+    "_postman_id": "c1c9e5b0-9f4d-4c1e-9d3d-123456789abc",
+    "name": "Blog API - Step 2 Add Endpoint Tests",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Postman tests for Step 2: POST /api/posts endpoint, including success and error cases."
+  },
+  "item": [
+    {
+      "name": "POST /api/posts - Valid New Post (201)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"My New Post\",\n  \"content\": \"This is the content of the new post.\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5002/api/posts",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5002",
+          "path": ["api", "posts"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST /api/posts - Missing Title (400)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"content\": \"Only content provided.\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5002/api/posts",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5002",
+          "path": ["api", "posts"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST /api/posts - Missing Content (400)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Only title provided\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5002/api/posts",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5002",
+          "path": ["api", "posts"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST /api/posts - Missing Both Fields (400)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{ }"
+        },
+        "url": {
+          "raw": "http://localhost:5002/api/posts",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5002",
+          "path": ["api", "posts"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET /api/posts - Verify New Post Exists (200)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5002/api/posts",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5002",
+          "path": ["api", "posts"]
+        }
+      },
+      "response": []
+    }
+  ]
+}

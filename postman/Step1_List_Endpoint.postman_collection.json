@@ -1,0 +1,25 @@
+{
+  "info": {
+    "_postman_id": "b7e8f3d2-4a2f-4c9e-8e3f-abcdef123456",
+    "name": "Blog API - Step 1 List Endpoint",
+    "description": "Tests for GET /api/posts endpoint to retrieve blog posts.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "GET /api/posts - List All Posts",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5002/api/posts",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5002",
+          "path": ["api", "posts"]
+        }
+      },
+      "response": []
+    }
+  ]
+}
