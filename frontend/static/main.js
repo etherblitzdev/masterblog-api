@@ -2,6 +2,7 @@
 window.onload = function() {
     // Attempt to retrieve the API base URL from the local storage
     var savedBaseUrl = localStorage.getItem('apiBaseUrl');
+
     // If a base URL is found in local storage, load the posts
     if (savedBaseUrl) {
         document.getElementById('api-base-url').value = savedBaseUrl;
@@ -11,8 +12,16 @@ window.onload = function() {
 
 // Function to fetch all the posts from the API and display them on the page
 function loadPosts() {
-    // Retrieve the base URL from the input field and save it to local storage
+    // Retrieve the base URL from the input field
     var baseUrl = document.getElementById('api-base-url').value;
+
+    // FIX: Normalize trailing slash to avoid accidental "//posts"
+    // Reason: If user enters "http://localhost:5002/api/", fetch becomes "//posts" which breaks.
+    if (baseUrl.endsWith('/')) {
+        baseUrl = baseUrl.slice(0, -1);
+    }
+
+    // Save normalized base URL to local storage
     localStorage.setItem('apiBaseUrl', baseUrl);
 
     // Use the Fetch API to send a GET request to the /posts endpoint
@@ -27,8 +36,11 @@ function loadPosts() {
             data.forEach(post => {
                 const postDiv = document.createElement('div');
                 postDiv.className = 'post';
-                postDiv.innerHTML = `<h2>${post.title}</h2><p>${post.content}</p>
-                <button onclick="deletePost(${post.id})">Delete</button>`;
+                postDiv.innerHTML = `
+                    <h2>${post.title}</h2>
+                    <p>${post.content}</p>
+                    <button onclick="deletePost(${post.id})">Delete</button>
+                `;
                 postContainer.appendChild(postDiv);
             });
         })
@@ -41,6 +53,11 @@ function addPost() {
     var baseUrl = document.getElementById('api-base-url').value;
     var postTitle = document.getElementById('post-title').value;
     var postContent = document.getElementById('post-content').value;
+
+    // FIX: Normalize trailing slash (same reason as above)
+    if (baseUrl.endsWith('/')) {
+        baseUrl = baseUrl.slice(0, -1);
+    }
 
     // Use the Fetch API to send a POST request to the /posts endpoint
     fetch(baseUrl + '/posts', {
@@ -59,6 +76,11 @@ function addPost() {
 // Function to send a DELETE request to the API to delete a post
 function deletePost(postId) {
     var baseUrl = document.getElementById('api-base-url').value;
+
+    // FIX: Normalize trailing slash (same reason as above)
+    if (baseUrl.endsWith('/')) {
+        baseUrl = baseUrl.slice(0, -1);
+    }
 
     // Use the Fetch API to send a DELETE request to the specific post's endpoint
     fetch(baseUrl + '/posts/' + postId, {
